@@ -20,8 +20,12 @@ const mixedNumbers = [6,3,1,7,5,2,6,8,9,4,2,7,9,3,1,8,4,3];
   (element, index, wholeArray)=>{}    Arrow Form
 */
 
-//Code Here
-let evenNumbers // = mixedNumbers.filter(/* Provide Your Callback Here */)
+function evens(ele,i,arr){
+  if(ele%2===0){
+    return ele;
+  }
+}
+let evenNumbers = mixedNumbers.filter(evens)
 
 
 
@@ -43,8 +47,10 @@ const prices = [15.00, 23.00, 78.00, 34.00, 12.00, 86.00, 12.00, 79.00, 32.00];
   (element, index, wholeArray)=>{}    Arrow Form
 */
 
-//Code Here
-let postTaxPrices // = prices.map(/* Provide Your Callback Here );
+function tax(ele,i,arr){
+  return ele * 1.07;
+}
+let postTaxPrices = prices.map(tax);
 
 
 
@@ -62,8 +68,10 @@ const populations = [8175133, 3792621, 2695598, 2100263];
   (runningTotal, curElement, curIndex, wholeArray)=>{} Arrow Form
 */
 
-//Code Here
-let totalPopulation //  = populations.reduce(/* Provide Your Callback Here */)
+function sum(total,ele,i,arr){
+  return total += ele
+}
+let totalPopulation = populations.reduce(sum)
 
 
 
@@ -88,8 +96,10 @@ const monstersInYourPocket = [{"monster":"Bulbabunny","CP":156},{"monster":"Bulb
   Use the filter method to return only the monsters that have a CP of over 200.
 */
 
-//Code Here
-let myStrongest // = monstersInYourPocket.filter(/* Provide Your Callback Here */)
+function highMonsters(ele,i,arr){
+  if(ele.CP>200){return ele}
+};
+let myStrongest = monstersInYourPocket.filter(highMonsters)
 
 
 
@@ -106,10 +116,11 @@ const orders = [{"price":15,"tax":0.09},{"price":42,"tax":0.07},{"price":56,"tax
   Use a higher order method to get all the order totals after adding in the sales tax. Your answer should be an array of numbers, one total for each order.
 */
 
-let orderTotals // Code here
-
-
-
+var orderTotals= orders.map(function(ele,i,arr){
+  return orders[i].price * (1+ orders[i].tax)
+})
+// tax = price * tax rate
+// total = price + price * tax
 ////////// PROBLEM 6 //////////
 
 // Do not edit the code below.
@@ -126,6 +137,11 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
   Use a high order method to create to get the sum of bobsTotal.
 */
 
-let bobsTotal //Code Here
+let bobsTotal = purchases.reduce((total,ele) => {
+  if(ele['owner'] === 'Bob'){
+    total += ele['price'];
+  }
+  return total;
+},0)
 
 
